@@ -66,7 +66,6 @@
 	(actionPerformed [~event]
 			  ~@code)))
 
-
 (defn <3 [love & loves] 
   (loop [l (str "I love " love) loves loves]
     (let [[love & loves] loves]

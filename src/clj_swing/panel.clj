@@ -1,14 +1,14 @@
 (ns clj-swing.panel
-  (:use [clj-swing.core :only [group-container-args auto-setters icon-setters]])
+  (:use [clj-swing.core :only
+         [group-container-args auto-setters icon-setters]])
+  (:use [clj-swing.frame :only [set-constraint!]])
   (:use [clojure.contrib.swing-utils :only [do-swing]])
   (:import (javax.swing Box BoxLayout JPanel JScrollPane JSplitPane)
 	   (java.awt Dimension Component GridLayout FlowLayout))
   (:require [clojure.contrib.java-utils :as java]))
 
-
 (def *panel-known-keys*
      [:name :icon :title :layout :constrains :size :bounds :location :pack :preferred-size :paint])
-
 
 (defmacro general-panel [cl args]
   "options are:

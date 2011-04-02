@@ -1,14 +1,15 @@
 (ns clj-swing.frame
-  (:use [clj-swing.core :only [group-container-args icon-setters auto-setters]]
+  (:use [clj-swing.core :only
+         [group-container-args icon-setters auto-setters]]
 	[clojure.contrib.swing-utils :only [do-swing]])
   (:import (javax.swing JFrame ImageIcon))
   (:require [clojure.contrib.java-utils :as java]))
 
-
 (defmacro set-constraint! [constraints field value]
   `(set! (. ~constraints ~(symbol (name field)))
          ~(if (keyword? value)
-	    `(java/wall-hack-field  (class ~constraints) '~(symbol (name value))  (class ~constraints))
+	    `(java/wall-hack-field
+              (class ~constraints) '~(symbol (name value)) (class ~constraints))
             value)))
 
 (def *frame-on-close-actions*
@@ -16,7 +17,6 @@
    :exit (JFrame/EXIT_ON_CLOSE)
    :hide (JFrame/HIDE_ON_CLOSE)
    :dispose (JFrame/DISPOSE_ON_CLOSE)})
-
 
 (def *frame-known-keys*
      [:name :icon :title :layout :constrains :on-close :size :bounds :location :pack :show :centered :menubar])
