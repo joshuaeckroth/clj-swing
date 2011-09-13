@@ -3,12 +3,29 @@
   (:import (java.awt.event ActionListener)
 	   (javax.swing ImageIcon)))
 
-(try
-  (require '[clojure.contrib.string :as st])
-   (catch Exception e (require '[clojure.contrib.str-utils2 :as st])))
+;; taken from clojure.contrib.str-utils2 1.2
+(defn str-capitalize
+  [s]
+  (if (< (count s) 2)
+    (.toUpperCase s)
+    (str (.toUpperCase #^String (subs s 0 1))
+         (.toLowerCase #^String (subs s 1)))))
+
+;; taken from clojure.contrib.str-utils2 1.2
+(defn str-split
+  "Splits string on a regular expression. Optional argument limit is
+   the maximum number of splits."
+  ([#^String s re] (seq (.split re s)))
+  ([#^String s re limit] (seq (.split re s limit))))
+
+;; taken from clojure.contrib.str-utils2 1.2
+(defn #^String str-upper-case
+  "Converts string to all upper-case."
+  [#^String s]
+  (.toUpperCase s))
 
 (defn kw-to-setter [kw]
-  (symbol (apply str "set" (map st/capitalize (st/split #"-" (name kw))))))
+  (symbol (apply str "set" (map str-capitalize (str-split (name kw) #"-")))))
 
 (defn group-container-args [args]
   (reduce 
@@ -45,7 +62,7 @@
 		      '. 
 		      (kw-to-setter a) 
 		      (if (keyword? v)
-			`(. ~cl ~(symbol (st/upper-case (name v))))
+			`(. ~cl ~(symbol (str-upper-case (name v))))
 			v)))
 	 (remove-known-keys opts known-kws))))
 

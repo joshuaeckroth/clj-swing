@@ -4,8 +4,7 @@
   (:use [clj-swing.frame :only [set-constraint!]])
   (:use [clojure.contrib.swing-utils :only [do-swing]])
   (:import (javax.swing Box BoxLayout JPanel JScrollPane JSplitPane)
-	   (java.awt Dimension Component GridLayout FlowLayout))
-  (:require [clojure.contrib.java-utils :as java]))
+	   (java.awt Dimension Component GridLayout FlowLayout)))
 
 (def *panel-known-keys*
      [:name :icon :title :layout :constrains :size :bounds :location :pack :preferred-size :paint])
@@ -66,13 +65,15 @@
 (defmacro panel [& args]
   `(general-panel JPanel ~args))
 
-(defmacro split-horizontal [left right]
+(defmacro split-horizontal
+  [left right]
   `(JSplitPane. JSplitPane/HORIZONTAL_SPLIT
-	       ~left ~right))
+                ~left ~right))
 
-(defmacro split-vertical [top bottom]
+(defmacro split-vertical
+  [top bottom]
   `(JSplitPane. JSplitPane/VERTICAL_SPLIT
-	       ~top ~bottom))
+                ~top ~bottom))
 
 
 ; Idea from joy of clojure

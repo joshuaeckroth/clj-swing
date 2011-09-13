@@ -1,6 +1,5 @@
 (ns clj-swing.document
   (:use [clojure.contrib.swing-utils :only [do-swing]])
-  (:require [clojure.contrib.string :as st])
   (:import [javax.swing.text AbstractDocument Position Element PlainDocument]
 	   [javax.swing.event DocumentEvent DocumentListener]
 	   javax.swing.event.DocumentEvent$EventType
@@ -17,11 +16,25 @@
 	p))
     positions)))
 
+;; copied from clojure.contrib.string 1.2
+(defn str-take
+  [n s]
+  (if (< (count s) n)
+    s
+    (.substring s 0 n)))
+
+;; copied from clojure.contrib.string 1.2
+(defn str-drop
+  [n s]
+  (if (< (count s) n)
+    ""
+    (.substring s n)))
+
 (defn str-insert [s offset new-s]
-  (str (st/take offset s) new-s (st/drop offset s)))
+  (str (str-take offset s) new-s (str-drop offset s)))
 
 (defn str-remove [s offset cnt]
-  (str (st/take offset s) (st/drop (+ offset cnt) s)))
+  (str (str-take offset s) (str-drop (+ offset cnt) s)))
 
 
 (defn string-ref-content [str-ref]

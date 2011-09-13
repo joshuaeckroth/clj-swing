@@ -6,7 +6,7 @@
 	'(java.awt.geom AffineTransform Ellipse2D)
 	'(java.awt GridBagLayout FlowLayout GridLayout GridBagConstraints)
 	'(java.awt.event KeyEvent)
-	clj-swing.tree.Pathed)
+        '(clj_swing.tree Pathed))
 
 (:use 'clojure.contrib.swing-utils)
 

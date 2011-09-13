@@ -2,13 +2,20 @@
   (:use [clj-swing.core :only
          [group-container-args icon-setters auto-setters]]
 	[clojure.contrib.swing-utils :only [do-swing]])
-  (:import (javax.swing JFrame ImageIcon))
-  (:require [clojure.contrib.java-utils :as java]))
+  (:import (javax.swing JFrame ImageIcon)))
+
+;; from clojure.contrib.java-utils 1.2
+(defn wall-hack-field
+  "Access to private or protected field."
+  [class-name field-name obj]
+  (-> class-name (.getDeclaredField (name field-name))
+    (doto (.setAccessible true))
+    (.get obj)))
 
 (defmacro set-constraint! [constraints field value]
   `(set! (. ~constraints ~(symbol (name field)))
          ~(if (keyword? value)
-	    `(java/wall-hack-field
+	    `(wall-hack-field
               (class ~constraints) '~(symbol (name value)) (class ~constraints))
             value)))
 
