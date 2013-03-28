@@ -3,7 +3,7 @@
   (:import (javax.swing JList ListModel)
 	   (javax.swing.event ListDataEvent ListDataListener ListSelectionListener)))
 
-(def *list-known-keys* [:action :on-selection-change])
+(def ^:dynamic *list-known-keys* [:action :on-selection-change])
 
 
 (defmacro add-list-selection-listener [obj [[event] & code]]

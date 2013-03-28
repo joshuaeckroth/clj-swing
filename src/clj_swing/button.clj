@@ -3,9 +3,9 @@
   (:import (javax.swing JButton JCheckBox JCheckBoxMenuItem JRadioButton JRadioButtonMenuItem JToggleButton ButtonGroup)))
 
 
-(def *button-icon-keys* 
+(def ^:dynamic *button-icon-keys* 
      [:icon :disabled-icon :selected-icon :pressed-icon :disabled-selected-icon :rollover-icon :rollover-selected-icon ])
-(def *button-known-keys*
+(def ^:dynamic *button-known-keys*
      (concat [:action :caption :name] *button-icon-keys*))
 
 

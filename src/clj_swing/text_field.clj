@@ -3,8 +3,8 @@
   (:import (javax.swing JTextField JTextArea JTextPane ListModel)
 	   (javax.swing.event ListDataEvent ListDataListener ListSelectionListener)))
 
-(def *text-field-known-keys* [:action :str-ref])
-(def *text-pane-known-keys* [:action :str-ref])
+(def ^:dynamic *text-field-known-keys* [:action :str-ref])
+(def ^:dynamic *text-pane-known-keys* [:action :str-ref])
 
 (defmacro text-field [& {action :action str-ref :str-ref :as opts}]
   `(doto (JTextField.)
@@ -15,7 +15,7 @@
      ~@(auto-setters JTextField *text-field-known-keys* opts)))
 
 
-(def *text-area-known-keys* [:action :str-ref :wrap])
+(def ^:dynamic *text-area-known-keys* [:action :str-ref :wrap])
 
 (defmacro text-area [& {action :action str-ref :str-ref wrap :wrap
                         :as opts}]

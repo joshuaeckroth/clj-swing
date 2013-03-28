@@ -5,7 +5,7 @@
   (:import (javax.swing Box BoxLayout JPanel JScrollPane JSplitPane)
 	   (java.awt Dimension Component GridLayout FlowLayout)))
 
-(def *panel-known-keys*
+(def ^:dynamic *panel-known-keys*
      [:name :icon :title :layout :constrains :size :bounds :location :pack :preferred-size :paint])
 
 (defmacro general-panel [cl args]

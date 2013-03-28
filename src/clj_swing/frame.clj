@@ -18,13 +18,13 @@
               (class ~constraints) '~(symbol (name value)) (class ~constraints))
             value)))
 
-(def *frame-on-close-actions*
+(def ^:dynamic *frame-on-close-actions*
   {:do-nothing (JFrame/DO_NOTHING_ON_CLOSE)
    :exit (JFrame/EXIT_ON_CLOSE)
    :hide (JFrame/HIDE_ON_CLOSE)
    :dispose (JFrame/DISPOSE_ON_CLOSE)})
 
-(def *frame-known-keys*
+(def ^:dynamic *frame-known-keys*
      [:name :icon :title :layout :constrains :on-close :size :bounds :location :pack :show :centered :menubar])
 
 (defmacro frame [& args]

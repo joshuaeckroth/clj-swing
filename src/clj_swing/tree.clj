@@ -6,7 +6,7 @@
 	   (javax.swing.event TreeSelectionListener TreeSelectionEvent TreeModelEvent)
            (javax.swing.tree TreePath TreeModel)))
 
-(def *tree-known-keys* [:action :name])
+(def ^:dynamic *tree-known-keys* [:action :name])
 
 (defn- index-of [coll item]
   (loop [coll coll idx  (int 0)]

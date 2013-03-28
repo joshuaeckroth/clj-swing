@@ -3,7 +3,7 @@
   (:import (javax.swing JComboBox ComboBoxModel MutableComboBoxModel)
 	   (javax.swing.event ListDataEvent ListDataListener)))
 
-(def *cb-known-keys* [:action])
+(def ^:dynamic *cb-known-keys* [:action])
 
 (defmacro commbo-box-model [& {mutable :mutable
 			       [[] & size-code] :size
