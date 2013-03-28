@@ -1,8 +1,7 @@
 (ns clj-swing.tree
-  (:use [clj-swing.core :only [add-action-listener add-listener icon-setters auto-setters]]
+  (:use [clj-swing.core :only [add-action-listener add-listener icon-setters auto-setters do-swing]]
 	[clj-swing panel]
 	clojure.set)
-  (:use [clojure.contrib.swing-utils :only [do-swing]])
   (:import (javax.swing JTree)
 	   (javax.swing.event TreeSelectionListener TreeSelectionEvent TreeModelEvent)
            (javax.swing.tree TreePath TreeModel)))

@@ -1,7 +1,6 @@
 (ns clj-swing.frame
   (:use [clj-swing.core :only
-         [group-container-args icon-setters auto-setters]]
-	[clojure.contrib.swing-utils :only [do-swing]])
+         [group-container-args icon-setters auto-setters do-swing]])
   (:import (javax.swing JFrame ImageIcon)))
 
 ;; from clojure.contrib.java-utils 1.2

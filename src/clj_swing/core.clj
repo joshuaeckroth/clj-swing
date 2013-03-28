@@ -1,7 +1,25 @@
 (ns clj-swing.core
-  (:use [clojure.contrib.swing-utils :only [do-swing]])
   (:import (java.awt.event ActionListener)
-	   (javax.swing ImageIcon)))
+	   (javax.swing ImageIcon SwingUtilities)))
+
+;; taken from clojure.contrib.swing-utils
+(defn do-swing*
+  "Runs thunk in the Swing event thread according to schedule:
+    - :later => schedule the execution and return immediately
+    - :now   => wait until the execution completes."
+  [schedule thunk]
+  (cond
+   (= schedule :later) (SwingUtilities/invokeLater thunk)
+   (= schedule :now) (if (SwingUtilities/isEventDispatchThread)
+                       (thunk)
+                       (SwingUtilities/invokeAndWait thunk)))
+  nil)
+
+(defmacro do-swing
+  "Executes body in the Swing event thread asynchronously. Returns
+  immediately after scheduling the execution."
+  [& body]
+  `(do-swing* :later (fn [] ~@body)))
 
 ;; taken from clojure.contrib.str-utils2 1.2
 (defn str-capitalize

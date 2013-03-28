@@ -1,6 +1,5 @@
 (ns clj-swing.combo-box
-  (:use [clj-swing.core]
-	[clojure.contrib.swing-utils :only [do-swing]])
+  (:use [clj-swing.core])
   (:import (javax.swing JComboBox ComboBoxModel MutableComboBoxModel)
 	   (javax.swing.event ListDataEvent ListDataListener)))
 

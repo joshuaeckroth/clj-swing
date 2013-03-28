@@ -1,7 +1,5 @@
 (ns clj-swing.list
-  (:use [clj-swing core panel]
-	[clojure.contrib.swing-utils :only [do-swing]])
-
+  (:use [clj-swing core panel])
   (:import (javax.swing JList ListModel)
 	   (javax.swing.event ListDataEvent ListDataListener ListSelectionListener)))
 

@@ -1,8 +1,7 @@
 (ns clj-swing.panel
   (:use [clj-swing.core :only
-         [group-container-args auto-setters icon-setters]])
+         [group-container-args auto-setters icon-setters do-swing]])
   (:use [clj-swing.frame :only [set-constraint!]])
-  (:use [clojure.contrib.swing-utils :only [do-swing]])
   (:import (javax.swing Box BoxLayout JPanel JScrollPane JSplitPane)
 	   (java.awt Dimension Component GridLayout FlowLayout)))
 

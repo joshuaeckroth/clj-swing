@@ -1,5 +1,5 @@
 (ns clj-swing.document
-  (:use [clojure.contrib.swing-utils :only [do-swing]])
+  (:use [clj-swing.core])
   (:import [javax.swing.text AbstractDocument Position Element PlainDocument]
 	   [javax.swing.event DocumentEvent DocumentListener]
 	   javax.swing.event.DocumentEvent$EventType
